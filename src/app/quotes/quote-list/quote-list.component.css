@@ -1,0 +1,12 @@
+table{
+  width: 100%;
+}
+
+.search-form-field{
+  width: 40%;
+}
+
+mat-footer-row mat-footer-cell{
+  justify-content: center;
+  font-style: italic;
+}

@@ -1,1 +1,79 @@
+<mat-toolbar>
+  <span>{{editMode?"Update Quote":"Add Quote"}}</span>
+</mat-toolbar>
 
+<form *ngIf="quoteForm" [formGroup]='quoteForm' (submit)="onSubmit()">
+  <mat-grid-list cols="2" rowHeight="400px">
+    <mat-grid-tile>
+      <div class="container">
+        <br>
+        <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="ifCompleted">
+            <mat-option value="false">Ongoing</mat-option>
+            <mat-option value="true">Completed</mat-option>
+          </mat-select>
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        </p>
+        <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Quote Type</mat-label>
+          <input formControlName="quoteType" matInput>
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        </p>
+        <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Quote Number</mat-label>
+          <input formControlName="quoteNumber" matInput>
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        </p>
+        <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Contact Name</mat-label>
+          <input formControlName="contact" matInput>
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        </p>
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" >{{editMode?"Update":"Submit"}}</button>
+          <button mat-raised-button color="accent" (click)="onClear()" type="reset">Clear</button>
+          <button mat-raised-button color="warn" (click)="onCancel()" type="button">Cancel</button>
+        </div>
+
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="container">
+        <p>
+      <mat-form-field appearance="fill">
+          <mat-label>Due Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dueDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        </p>
+        <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Task Type</mat-label>
+          <input formControlName="taskType" matInput>
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        </p>
+        <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Task Description</mat-label>
+          <textarea matInput formControlName="task" rows="8"></textarea>
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        </p>
+    </div>
+
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</form>

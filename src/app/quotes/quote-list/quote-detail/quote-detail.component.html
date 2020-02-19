@@ -1,1 +1,51 @@
-<p>quote-detail works!</p>
+<mat-card *ngIf="quoteItem">
+  <mat-card-header>
+    <mat-card-title>Quote Details</mat-card-title>
+    <mat-card-subtitle>No.{{quoteItem.quoteID}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon>settings</mat-icon>
+        <h3 mat-line>Quote Type: <span><b>{{quoteItem.quoteType}}</b></span></h3>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>folder_special</mat-icon>
+        <h3 mat-line>Quote Number:   <span><b>{{quoteItem.quoteNumber}}</b></span></h3>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>people</mat-icon>
+        <h3 mat-line>Contact: <span><b>{{quoteItem.contact}}</b></span></h3>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>work</mat-icon>
+        <h3 mat-line>Task Type: <span><b>{{quoteItem.taskType}}</b></span></h3>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>today</mat-icon>
+        <h3 mat-line>Due Date: <span><b>{{quoteItem.dueDate}}</b></span></h3>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>{{quoteItem.ifCompleted?"sentiment_very_satisfied":"sentiment_very_dissatisfied"}}</mat-icon>
+        <h3 mat-line>Progress: <span><b>{{quoteItem.ifCompleted?"Completed":"Ongoing"}}</b></span></h3>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>android</mat-icon>
+        <h3 mat-line>Task Description:  <span><b>{{quoteItem.task}}</b></span></h3>
+      </mat-list-item>
+
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="onClose()">
+      LEAVE
+      <mat-icon>two_wheeler</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

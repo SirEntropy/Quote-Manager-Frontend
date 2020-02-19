@@ -5,16 +5,15 @@ import {LoginComponent} from '../login/login.component';
 import {RegisterComponent} from '../register/register.component';
 import {QuotesComponent} from '../quotes/quotes.component';
 import {QuoteListComponent} from '../quotes/quote-list/quote-list.component';
-import {QuoteEditComponent} from '../quotes/quote-edit/quote-edit.component';
+import {AuthGuardService} from '../shared/auth-guard.service';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'quotes', component: QuotesComponent,
+  {path: 'quotes', canActivate: [AuthGuardService], component: QuotesComponent,
     children: [
       {path: 'list', component: QuoteListComponent},
-      {path: 'new', component: QuoteEditComponent}
     ]}
 
 ];
